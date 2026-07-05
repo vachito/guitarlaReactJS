@@ -1,4 +1,7 @@
 export default function Header({ cart }) {
+  // State Derivado
+  const isEmpty = ()=> cart.length === 0
+
   return (
     <header className="py-5 header">
       <div className="container-xl">
@@ -21,7 +24,9 @@ export default function Header({ cart }) {
               />
 
               <div id="carrito" className="bg-white p-3">
-                <p className="text-center">El carrito esta vacio</p>
+                {isEmpty() ? (
+                  <p className="text-center">El carrito esta vacio</p>
+                ):(
                 <table className="w-100 table">
                   <thead>
                     <tr>
@@ -65,6 +70,8 @@ export default function Header({ cart }) {
                     ))}
                   </tbody>
                 </table>
+
+                )}
 
                 <p className="text-end">
                   Total pagar: <span className="fw-bold">$899</span>
